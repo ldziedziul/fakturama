@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Fakturama</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/assets/e8379e71.app.min.css">
+
+  <script src="https://login.persona.org/include.js"></script>
+
+  <!-- for more details visit: https://github.com/yeoman/grunt-usemin -->
+
+  <script src="/assets/f2c13904.config.min.js"></script>
+
+  <script src="/assets/8d0ec021.vendor.min.js"></script>
+
+  <script src="/assets/84375ca4.app.min.js"></script>
+
+</head>
+<body>
+  <!--[if lt IE 8]>
+    <p class="browsehappy">
+      You are using an <strong>outdated</strong> browser. Please
+      <a href="http://browsehappy.com/">upgrade your browser</a>
+      to improve your experience.
+    </p>
+  <![endif]-->
+
+  <div class="wrap">
+    <div id="app"></div>
+    <div class="push"></div>
+  </div>
+
+  <footer class="footer hidden-print">
+    <div class="container text-muted">
+      <div class="cowbell-labs pull-left">
+        <a href="https://cowbell-labs.com/" target="_blank">
+          <span>Cowbell Labs</span>
+          <img src="/assets/cowbell-labs.svg">
+        </a>
+      </div>
+
+      <div class="github pull-right">
+        <a href="https://github.com/cowbell/fakturama" class="github" target="_blank">
+          <img src="/assets/github.svg">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.Fakturama = require("fakturama/app")["default"].create();
+  </script>
+</body>
+</html>
