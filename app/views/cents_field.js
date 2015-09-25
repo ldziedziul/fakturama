@@ -23,7 +23,7 @@ var CentsField = NumberField.extend({
             value = this.get("value");
 
         if (arguments.length > 1) {
-            this.set("value", formatCents(cents, precision));
+            this.set("value", formatCents(cents, precision,'.'));
         }
 
         return parseCents(value, precision);

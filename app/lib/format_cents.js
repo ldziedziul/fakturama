@@ -1,4 +1,5 @@
-function formatCents(value, precision) {
+function formatCents(value, precision, decimalSeparator) {
+    decimalSeparator = decimalSeparator || ",";
     var integerPart, fractionalPart,
         minus = "";
 
@@ -22,7 +23,7 @@ function formatCents(value, precision) {
     fractionalPart = value.slice(-precision);
 
     if (precision > 0) {
-        return minus + [integerPart, fractionalPart].join(",");
+        return minus + [integerPart, fractionalPart].join(decimalSeparator);
     } else {
         return minus + integerPart;
     }
