@@ -11,7 +11,7 @@ var FirebaseAdapter = Ember.RESTAdapter.extend({
 
     ajaxSettings: function (url, method) {
         return {
-            url: window.ENV.FIREBASE_URL + window.ENV.FIREBASE_USER_ID + "/" + url + "?auth=" + window.ENV.FIREBASE_AUTH_TOKEN,
+            url: window.ENV.FIREBASE_URL + window.ENV.FIREBASE_USER_ID + "/" + url + ".json?auth=" + window.ENV.FIREBASE_AUTH_TOKEN,
             type: method
         };
     }
