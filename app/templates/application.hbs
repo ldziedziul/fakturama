@@ -11,10 +11,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        {{#link-to "invoices" tagName="li"}}
-          <a href="javascript:;">Faktury</a>
-        {{/link-to}}
         {{#unless user.isAnonymous}}
+          {{#link-to "invoices" tagName="li"}}
+            <a href="javascript:;">Faktury</a>
+          {{/link-to}}
           {{#link-to "clients" tagName="li"}}
             <a href="javascript:;">Klienci</a>
           {{/link-to}}
@@ -28,10 +28,6 @@
       </ul>
       <div class="navbar-right">
         {{#if user.isAnonymous}}
-          {{#view "popover" id="login-alert" tagName="p" class="navbar-text" content="<button type='button' class='close' onclick='$(&quot;#login-alert&quot;).click()' aria-hidden='true'>&times;</button>Korzystasz z aplikacji jako <strong>gość</strong>. Dostęp do wprowadzonych danych zostanie utracony po zamknięciu okna przeglądarki lub <strong>zalogowaniu się</strong>. <br> Niektóre funkcje aplikacji są dostępne wyłącznie po <strong>zalogowaniu się</strong>." isDismissedBinding="isAlertDismissed"}}
-            <img height="30" class="gravatar img-circle" {{bind-attr src="user.gravatarURL"}}>
-            {{user.name}}
-          {{/view}}
           <ul class="nav navbar-nav">
             <li>
               <a href="javascript:;" {{action "signIn" "google"}}>Zaloguj</a>
@@ -55,5 +51,7 @@
 </nav>
 
 <div class="container site-content">
-  {{outlet}}
+    {{#unless user.isAnonymous}}
+        {{outlet}}
+    {{/unless}}
 </div>
