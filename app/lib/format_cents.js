@@ -22,7 +22,7 @@ function formatCents(value, precision) {
     fractionalPart = value.slice(-precision);
 
     if (precision > 0) {
-        return minus + [integerPart, fractionalPart].join(".");
+        return minus + [integerPart, fractionalPart].join(",");
     } else {
         return minus + integerPart;
     }
