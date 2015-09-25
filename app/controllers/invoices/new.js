@@ -23,18 +23,22 @@ var InvoicesNewController = Ember.ObjectController.extend(ExchangeRateMixin, {
         var periodNumber, lastNumber, invoices,
             properties = {},
             controller = this;
+        function zeroPad(num, places) {
+            var zero = places - num.toString().length + 1;
+            return Array(+(zero > 0 && zero)).join("0") + num;
+        }
 
         if (this.get("settings.numerationTypeCode") === "year") {
             periodNumber = new Date().getFullYear().toString();
         }
 
         if (this.get("settings.numerationTypeCode") === "month") {
-            periodNumber = (new Date().getMonth() + 1).toString() + "/" + new Date().getFullYear().toString();
+            periodNumber = "FV/" + new Date().getFullYear().toString() + "/" + zeroPad((new Date().getMonth() + 1),2);
         }
 
         if (periodNumber) {
             lastNumber = this.get("invoices").filterBy("periodNumber", periodNumber).sortBy("periodicalNumber").get("lastObject.periodicalNumber") || 0;
-            properties.number = (lastNumber + 1) + "/" + periodNumber;
+            properties.number = periodNumber+"/"+zeroPad(lastNumber + 1,4);
         }
 
         properties.seller = this.get("settings.seller");

@@ -24,11 +24,11 @@ var InvoicePropertiesMixin = Ember.Mixin.create({
     }.property("comment"),
 
     periodNumber: function () {
-        return this.getWithDefault("number", "").match(/([^/]+)\/(.+)/)[2];
+        return this.getWithDefault("number", "").match(/([^/]+)\/([^/]+)\/([^/]+)/)[0];
     }.property("number"),
 
     periodicalNumber: function () {
-        return parseInt(this.getWithDefault("number", "").match(/([^/]+)\/(.+)/)[1], 10) || 0;
+        return parseInt(this.getWithDefault("number", "").match(/([^/]+)\/([^/]+)\/(.+)\/(.+)/)[4], 10) || 0;
     }.property("number"),
 
     items: function () {
