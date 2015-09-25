@@ -8,6 +8,7 @@ var Invoice = Ember.Model.extend(InvoicePropertiesMixin, {
     issueDate: Ember.attr(String),
     deliveryDate: Ember.attr(String),
     dueDate: Ember.attr(String),
+    dueDays: Ember.attr(String),
     seller: Ember.attr(String),
     buyer: Ember.attr(String),
     currencyCode: Ember.attr(String),

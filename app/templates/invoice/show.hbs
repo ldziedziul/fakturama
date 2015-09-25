@@ -1,20 +1,13 @@
-<h1>
+<h3 style="text-align: center">
   <strong>
-    Faktura {{#if isEnglish}}/ Invoice{{/if}}
+    Faktura VAT {{#if isEnglish}}/ VAT Invoice{{/if}} {{number}}
   </strong>
-</h1>
+  <img src="http://eonsoft.pl/eonsoft-logo-2015.png" style="float:right;width:100px;"/>
+</h3>
 
 <br>
 
 <div>
-  <p>
-    {{#if isEnglish}}
-      Numer / Number:
-    {{else}}
-      Numer:
-    {{/if}}
-    <strong>{{number}}</strong>
-  </p>
   <p>
     {{#if isEnglish}}
       Data wystawienia / Date of issue:
@@ -31,22 +24,6 @@
     {{/if}}
     <strong>{{deliveryDate}}</strong>
   </p>
-  <p>
-    {{#if isEnglish}}
-      Termin płatności / Due date:
-    {{else}}
-      Termin płatności:
-    {{/if}}
-    <strong>{{dueDate}}</strong>
-  </p>
-
-  {{#if isExchanging}}
-    <p>
-      Kwoty podatku VAT zostały przeliczone po kursie średnim {{currencyCode}} z dnia <strong>{{exchangeDate}}</strong>,
-      wynoszącym <strong>{{format-cents exchangeRate precision=4}}</strong> PLN.
-    </p>
-  {{/if}}
-
 </div>
 
 <div class="row">
@@ -204,6 +181,14 @@
 
 <div class="row">
   <div class="col-xs-12">
+      <h4>
+          {{#if isEnglish}}
+              Do zapłaty / ????:
+          {{else}}
+              Do zapłaty:
+          {{/if}}
+          <strong>{{format-cents totalGrossAmount}}&nbsp;{{currency.code}}</strong>
+      </h4>
     <p>
       Słownie: {{totalGrossAmountInWords}}
     </p>
@@ -219,11 +204,19 @@
   <div class="row">
     <div class="col-xs-12">
       <h4>
-        <strong>Płatność{{#if isEnglish}} / Payment{{/if}}</strong>
+        <strong>Płatność{{#if isEnglish}} / Payment{{/if}}: Przelew {{dueDays}} dni</strong>
       </h4>
+        <h4>
+            {{#if isEnglish}}
+                Termin płatności / Due date:
+            {{else}}
+                Termin płatności:
+            {{/if}}
+            <strong>{{dueDate}}</strong>
+        </h4>
       {{#if accountBankName}}
         <p>
-          <strong>{{accountBankName}}</strong>
+          Bank: <strong>{{accountBankName}}</strong>
         </p>
       {{/if}}
       {{#if accountSwift}}
@@ -234,6 +227,12 @@
       <p>
         IBAN: <strong>{{accountNumber}}</strong>
       </p>
+        {{#if isExchanging}}
+            <p>
+                Kwoty podatku VAT zostały przeliczone po kursie średnim {{currencyCode}} z dnia <strong>{{exchangeDate}}</strong>,
+                wynoszącym <strong>{{format-cents exchangeRate precision=4}}</strong> PLN.
+            </p>
+        {{/if}}
     </div>
   </div>
 {{/if}}
